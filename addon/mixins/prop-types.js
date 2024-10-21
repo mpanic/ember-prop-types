@@ -2,7 +2,8 @@
  * The PropTypesMixin definition
  */
 import Ember from "ember";
-import {get, getWithDefault} from '@ember/object'
+// import {get, getWithDefault} from '@ember/object'
+import {get} from '@ember/object'
 import Mixin from '@ember/object/mixin'
 import {assign, merge} from '@ember/polyfills'
 import {typeOf} from '@ember/utils'
@@ -16,14 +17,23 @@ import PropTypes, {
 
 const objectAssign = Object.assign || assign || merge
 
+
+function getWithDefault(obj, key, defaultValue) {
+  let result = get(obj, key);
+  if (result === undefined) {
+    result = defaultValue;
+  }
+  return result;
+}
+
 export const settings = {
   requireComponentPropTypes: Ember.getWithDefault(
     config, 'ember-prop-types.requireComponentPropTypes', false
   ),
-  spreadProperty: Ember.get(config, 'ember-prop-types.spreadProperty'),
-  throwErrors: Ember.getWithDefault(config, 'ember-prop-types.throwErrors', false),
-  validate: Ember.get(config, 'ember-prop-types.validate'),
-  validateOnUpdate: Ember.getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
+  spreadProperty:get(config, 'ember-prop-types.spreadProperty'),
+  throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
+  validate: get(config, 'ember-prop-types.validate'),
+  validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
 }
 
 export const helpers = {
