@@ -18,7 +18,7 @@ import PropTypes, {
 const objectAssign = Object.assign || assign || merge
 
 
-function getWithDefault(obj, key, defaultValue) {
+function getWithDefault2(obj, key, defaultValue) {
   let result = get(obj, key);
   if (result === undefined) {
     result = defaultValue;
@@ -27,13 +27,13 @@ function getWithDefault(obj, key, defaultValue) {
 }
 
 export const settings = {
-  requireComponentPropTypes: Ember.getWithDefault(
+  requireComponentPropTypes: getWithDefault2(
     config, 'ember-prop-types.requireComponentPropTypes', false
   ),
   spreadProperty:get(config, 'ember-prop-types.spreadProperty'),
-  throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
+  throwErrors: getWithDefault2(config, 'ember-prop-types.throwErrors', false),
   validate: get(config, 'ember-prop-types.validate'),
-  validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
+  validateOnUpdate: getWithDefault2(config, 'ember-prop-types.validateOnUpdate', false)
 }
 
 export const helpers = {
