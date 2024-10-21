@@ -1,6 +1,7 @@
 /**
  * The PropTypesMixin definition
  */
+import Ember from "ember";
 import {get, getWithDefault} from '@ember/object'
 import Mixin from '@ember/object/mixin'
 import {assign, merge} from '@ember/polyfills'
@@ -16,13 +17,13 @@ import PropTypes, {
 const objectAssign = Object.assign || assign || merge
 
 export const settings = {
-  requireComponentPropTypes: getWithDefault(
+  requireComponentPropTypes: Ember.getWithDefault(
     config, 'ember-prop-types.requireComponentPropTypes', false
   ),
-  spreadProperty: get(config, 'ember-prop-types.spreadProperty'),
-  throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
-  validate: get(config, 'ember-prop-types.validate'),
-  validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
+  spreadProperty: Ember.get(config, 'ember-prop-types.spreadProperty'),
+  throwErrors: Ember.getWithDefault(config, 'ember-prop-types.throwErrors', false),
+  validate: Ember.get(config, 'ember-prop-types.validate'),
+  validateOnUpdate: Ember.getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
 }
 
 export const helpers = {
@@ -32,10 +33,10 @@ export const helpers = {
 
   /* eslint-disable complexity */
   validateProperty (ctx, name, def) {
-    let value = get(ctx, name)
+    let value = Ember.get(ctx, name)
 
     if (value === undefined && settings.spreadProperty) {
-      value = get(ctx, `${settings.spreadProperty}.${name}`)
+      value = Ember.get(ctx, `${settings.spreadProperty}.${name}`)
     }
 
     if (value === undefined) {
