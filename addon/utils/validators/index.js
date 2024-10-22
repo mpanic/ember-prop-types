@@ -1,4 +1,4 @@
-import {assign, merge} from '@ember/polyfills'
+// import {assign, merge} from '@ember/polyfills'
 
 import any from './any'
 import array from './array'
@@ -20,7 +20,8 @@ import shape from './shape'
 import string from './string'
 import symbol from './symbol'
 
-const objectAssign = Object.assign || assign || merge
+// const objectAssign = Object.assign || assign || merge
+const objectAssign = Object.assign 
 
 const validators = {
   any,
