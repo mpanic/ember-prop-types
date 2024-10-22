@@ -5,7 +5,7 @@ import Ember from "ember";
 // import {get, getWithDefault} from '@ember/object'
 import {get} from '@ember/object'
 import Mixin from '@ember/object/mixin'
-import {assign, merge} from '@ember/polyfills'
+// import {assign, merge} from '@ember/polyfills'
 import {typeOf} from '@ember/utils'
 import config from 'ember-get-config'
 
@@ -15,7 +15,8 @@ import PropTypes, {
   validators
 } from '../utils/prop-types'
 
-const objectAssign = Object.assign || assign || merge
+// const objectAssign = Object.assign || assign || merge
+const objectAssign = Object.assign
 
 
 function getWithDefault2(obj, key, defaultValue) {
